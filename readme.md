@@ -1,0 +1,1 @@
+working from a fork of Discord Translate bot [discord translate bot](https://github.com/TannerReynolds/Translation-Bot)
