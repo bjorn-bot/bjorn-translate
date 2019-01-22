@@ -11,6 +11,6 @@
   "license": "ISC",
   "dependencies": {
     "@k3rn31p4nic/google-translate-api": "^1.0.5",
-    "discord.io": "github:woor/discord.io#gateway_v6"
+    "eris": "^0.9.0"
   }
 }
