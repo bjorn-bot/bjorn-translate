@@ -34,7 +34,6 @@
     "before": false,
     "after": false
   },
-  "sourceType": "module",
   "ecmaFeatures": {
     "modules": true,
     "jsx": true,
@@ -42,7 +41,7 @@
     "impliedStrict": true
   },
   "plugins": [
-    "react"
+    
   ],
   "extends": "eslint:recommended",
   "parserOptions": {
