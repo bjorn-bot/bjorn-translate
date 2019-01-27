@@ -8,7 +8,7 @@ const langs = require('./langmap.js');
 let bjornTranslateBot = new Discord(config.token, { maxShards: "auto", getAllUsers: true });
 
 bjornTranslateBot.on('ready', (evt) => {
-  console.log(`Logged in as: ${bjornTranslateBot.user.username} (${bjornTranslateBot.user.id})`);
+   console.log(`Logged in as: ${bjornTranslateBot.user.username} (${bjornTranslateBot.user.id})`);
 });
 
 bjornTranslateBot.on('messageCreate', async (msg) => {
@@ -70,7 +70,11 @@ bjornTranslateBot.on('messageCreate', async (msg) => {
     if (!msg.channel.topic.toLowerCase().startsWith('ts-')) return;
 
     let tsChannels = [];
-    // split on another character in topic to get match
+    // split on another character in topic to get channel indentifier
+    // loop through channels to find all with matching identifier
+    // loop through indentifier group, find language match for each
+    // channel in group, call tsChannelTranslate for each channel in
+    // group
     msg.channel.guild.channels.map((channel) => {
       if (channel.topic) {
         if (channel.topic.toLowerCase().startsWith('ts-')) tsChannels.push({ topic: channel.topic, id: channel.id });
