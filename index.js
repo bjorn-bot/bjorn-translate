@@ -69,12 +69,15 @@ bjornTranslateBot.on('messageCreate', async (msg) => {
     if (!msg.channel.topic) return;
     if (!msg.channel.topic.toLowerCase().startsWith('ts-')) return;
 
-    let tsChannels = [];
+    let tsChannels = {};
     // split on another character in topic to get channel indentifier
     // loop through channels to find all with matching identifier
     // loop through indentifier group, find language match for each
     // channel in group, call tsChannelTranslate for each channel in
     // group
+    let splitTopic = msg.channel.topic.split('#');
+    let topicIdentifier = splitTopic[1];
+
     msg.channel.guild.channels.map((channel) => {
       if (channel.topic) {
         if (channel.topic.toLowerCase().startsWith('ts-')) tsChannels.push({ topic: channel.topic, id: channel.id });
@@ -101,6 +104,7 @@ bjornTranslateBot.on('messageCreate', async (msg) => {
       if(targetChannel !== sourceChannel) {
         
         translate(string, { to: lang }).then(res => {
+          // can strip out this length limit?
           if (res.text.length > 200) {
             bjornTranslateBot.createMessage(targetChannel, `**${msg.author.username}#${msg.author.discriminator}**: ${res.text}`);
           } else {
