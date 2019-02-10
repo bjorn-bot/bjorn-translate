@@ -5,6 +5,8 @@ const config = require('./config');
 const lang = require('./langs.js');
 const langs = require('./langmap.js');
 
+const bjornTools = require('./bjorn-tools');
+
 let bjornTranslateBot = new Discord(config.token, { maxShards: "auto", getAllUsers: true });
 
 bjornTranslateBot.on('ready', (evt) => {
@@ -13,6 +15,8 @@ bjornTranslateBot.on('ready', (evt) => {
 
 bjornTranslateBot.on('messageCreate', async (msg) => {
   if(msg.author.bot) return;
+
+  if (msg.content.startsWith('!bjorn')) return bjornTools(msg, bjornTranslateBot);
 
   const tsChannelsEnabled = config.tsChannelsEnabled;
   const args = msg.content.slice(config.prefix.length).trim().split(/ +/g);
