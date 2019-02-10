@@ -1,19 +1,47 @@
 module.exports = {
   'kings-landing': {
-    name: 'kings landing',
+    name: 'King\'s Landing',
     region: 'the-iron-throne',
     x: 1051, 
     y: 744,
-    owned: false
+    stars: 5
   },
   'winterfell': {
-    name: 'winterfell',
+    name: 'Winterfell',
     region: 'the-north',
     x: 748,
     y: 1905,
-    owned: false
+    stars: '4'
   },
-  
+  'the-dreadfort': {
+    name: 'The Dreadfort',
+    region: 'the-north',
+    x: 1059,
+    y: 1911,
+    stars: 3.5
+  },
+  'deepwood-motte': {
+    name: 'Deepwood Motte',
+    region: 'the-north',
+    x: 580,
+    y: 2000,
+    stars: 3
+  },
+  'moat-cailin': {
+    name: 'Moat Cailin',
+    region: 'the-north',
+    x: 819,
+    y: 1560,
+    stars: 3
+  },
+  'bear-island': {
+    name: 'Bear Island',
+    region: 'the-north',
+    x: 578, 
+    y: 2151,
+    stars: 2.5
+  },
+
   'casterly-rock': {
     name: 'casterly rock',
     x: 360,
