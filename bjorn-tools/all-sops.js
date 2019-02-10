@@ -41,6 +41,13 @@ module.exports = {
     y: 2151,
     stars: 2.5
   },
+  'highpoint': {
+    name: 'Highpoint',
+    region: 'the-north',
+    x: 797,
+    y: 2054,
+    stars: 2.5
+  },
 
   'casterly-rock': {
     name: 'casterly rock',
