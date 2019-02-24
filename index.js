@@ -84,23 +84,33 @@ bjornTranslateBot.on('messageCreate', async (msg) => {
 
     msg.channel.guild.channels.map((channel) => {
       if (channel.topic) {
-        if (channel.topic.toLowerCase().startsWith('ts-')) tsChannels.push({ topic: channel.topic, id: channel.id });
+        if (channel.topic.toLowerCase().startsWith('ts-')) {
+          let channelInfo = channel.topic.replace('ts-', '').split('#');
+          let channelLanguage = channelInfo[0];
+          let channelTopic = channelInfo[1];
+
+          if (!tsChannels[channelTopic]) tsChannels[channelTopic] = {};
+
+          tsChannels[channelTopic][channelLanguage] = channel.id;
+        }
       }
     });
 
-    for (i = 0; i < tsChannels.length; i++) {
-      let channelLangReg = /(?<=ts\-)\S+/i;
-      let channelLang = channelLangReg.exec(tsChannels[i].topic.toLowerCase());
-      channelLang = channelLang[channelLang.length - 1];
+    console.log(tsChannels);
 
-      for (let l in langs) {
-        for (let a in langs[l].alias) {
-          if (langs[l].alias[a] === channelLang) {
-            tsChannelTranslate(l, msg.content, `:flag_${langs[l].flag}:`, msg.channel.id, tsChannels[i].id);
-          }
-        }
-      }
-    }
+    // for (i = 0; i < tsChannels.length; i++) {
+    //   let channelLangReg = /(?<=ts\-)\S+/i;
+    //   let channelLang = channelLangReg.exec(tsChannels[i].topic.toLowerCase());
+    //   channelLang = channelLang[channelLang.length - 1];
+
+    //   for (let l in langs) {
+    //     for (let a in langs[l].alias) {
+    //       if (langs[l].alias[a] === channelLang) {
+    //         tsChannelTranslate(l, msg.content, `:flag_${langs[l].flag}:`, msg.channel.id, tsChannels[i].id);
+    //       }
+    //     }
+    //   }
+    // }
 
     function tsChannelTranslate(lang, string, flag, sourceChannel, targetChannel) {
       if (string == '' || string == null || string == undefined) return;
